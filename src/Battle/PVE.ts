@@ -31,8 +31,9 @@ class PVE extends Battle {
     const verificationPlayer = PVE.verifyIsAlive(this.player); 
     while (battle) {
       this.attackMonsters(this._enviroment);
+      if (verificationPlayer) battle = false;
       this.attackPlayer(this._enviroment);
-      if (verificationEnemies || verificationPlayer) battle = false;
+      if (verificationEnemies) battle = false;
     }
     return super.fight(); 
   }
