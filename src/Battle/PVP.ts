@@ -9,10 +9,14 @@ class PVP extends Battle {
     super(playerOne);
   }
 
+  static turnFight(player1: Fighter, player2: Fighter) {
+    if (player1.lifePoints !== -1) player1.attack(player2);
+    if (player2.lifePoints !== -1) player2.attack(player1);
+  }
+
   fight(): number {    
     while (Battle.isAlive(this.player) && Battle.isAlive(this._playerTwo)) {
-      if (Battle.isAlive(this.player)) this.player.attack(this._playerTwo);
-      if (Battle.isAlive(this._playerTwo)) this._playerTwo.attack(this.player);
+      PVP.turnFight(this.player, this._playerTwo);
     }
     return super.fight(); 
   }
