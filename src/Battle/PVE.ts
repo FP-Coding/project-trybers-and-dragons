@@ -9,10 +9,10 @@ class PVE extends Battle {
     super(player);
   }
 
-  static turnFight(enviroment: (Fighter | SimpleFighter)[]) {
+  private turnFight(enviroment: (Fighter | SimpleFighter)[]) {
     enviroment.forEach((enemy) => {
-    if (enemy.lifePoints !== -1) this.player.attack(enemy);
-    if (enemy.lifePoints !== -1) enemy.attack(this.player);
+      if (this.player.lifePoints !== -1) this.player.attack(enemy);
+      if (enemy.lifePoints !== -1) enemy.attack(this.player);
     });
   }
 
