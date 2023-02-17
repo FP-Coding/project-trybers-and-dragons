@@ -10,12 +10,9 @@ class PVP extends Battle {
   }
 
   fight(): number {    
-    let battle = true;
-    while (battle) {
-      this.player.attack(this._playerTwo);
-      if (Battle.isAlive(this.player)) battle = false;
-      this._playerTwo.attack(this.player);
-      if (Battle.isAlive(this._playerTwo)) battle = false;
+    while (Battle.isAlive(this.player) && Battle.isAlive(this._playerTwo)) {
+      if (Battle.isAlive(this.player)) this.player.attack(this._playerTwo);
+      if (Battle.isAlive(this._playerTwo)) this._playerTwo.attack(this.player);
     }
     return super.fight(); 
   }
